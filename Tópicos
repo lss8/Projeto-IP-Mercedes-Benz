@@ -1,0 +1,28 @@
+Roteiro 
+
+Classes básicas
+
+-Pessoa :
+  Nome
+  Idade
+  CPF
+  Endereço
+  Produto
+  
+-Produto :
+  Modelo
+  Cor
+  Preço
+  concessionária
+  
+-Concessionária :
+  Cliente
+  Funcionario
+  Local
+  Estoque
+  
+-Tesouraria :
+  Produto
+  Custo
+  Lucro
+  Saldo 
