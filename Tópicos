@@ -13,16 +13,15 @@ Classes básicas
   Modelo
   Cor
   Preço
-  concessionária
+  Custof
+  Concessionária
   
 -Concessionária :
+  Produto
   Cliente
   Funcionario
   Local
   Estoque
   
 -Tesouraria :
-  Produto
-  Custo
-  Lucro
   Saldo 
