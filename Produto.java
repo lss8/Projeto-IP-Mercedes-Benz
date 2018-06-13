@@ -1,4 +1,3 @@
-
 public class Produto {
 	private String modelo ;
 	private String cor ;
@@ -18,8 +17,16 @@ public class Produto {
 		return this.modelo ;
 	}
 	
+	public void setModelo(String modelo) {
+		this.modelo = modelo ;
+	}
+	
 	public double getPreco() {
 		return this.preco ;
+	}
+	
+	public void setPreco (double preco) {
+		this.preco = preco ;
 	}
 	
 	public double getLucro() {
@@ -30,24 +37,24 @@ public class Produto {
 		return this.custof ;
 	}
 	
+	public void setCustof (double custof) {
+		this.custof = custof ;
+	}
+	
 	public int getEstoque() {
 		return this.concessionaria.getEstoque() ;
 	}
 	
-	public void setModelo(String modelo) {
-		this.modelo = modelo ;
+	public String getCor() {
+		return this.cor ;
 	}
 	
 	public void setCor(String cor) {
 		this.cor = cor ;
 	}
 	
-	public void setPreco (double preco) {
-		this.preco = preco ;
-	}
-	
-	public void setCustof (double custof) {
-		this.custof = custof ;
+	public String getConcessionaria() {
+		return this.concessionaria.getLocal() ;
 	}
 	
 	public void setConcessionaria (Concessionaria concessionaria) {
