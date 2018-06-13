@@ -1,4 +1,3 @@
-
 public class RepositorioProdutoLista implements RepositorioProduto {
 	private Produto produto ;
 	private RepositorioProdutoLista next ;
@@ -18,14 +17,14 @@ public class RepositorioProdutoLista implements RepositorioProduto {
 		}
 	}
 	
-	public void remover(Produto produto) {
+	public void remover(String modelo) {
 		if (this.produto != null) {
-			if (this.produto.getModelo().equals(produto.getModelo())) {
+			if (this.produto.getModelo().equals(modelo)) {
 				this.produto = this.next.produto ;
 				this.next = this.next.next ;
 			}
 			else {
-				this.next.remover(produto);
+				this.next.remover(modelo);
 			}
 		}
 		else {
@@ -33,13 +32,13 @@ public class RepositorioProdutoLista implements RepositorioProduto {
 		}
 	}
 	
-	public Produto procurar(Produto produto) {
+	public Produto procurar(String modelo) {
 		if (this.produto != null) {
-			if (this.produto.getModelo().equals(produto.getModelo())) {
+			if (this.produto.getModelo().equals(modelo)) {
 				return produto ;
 			}
 			else {
-				this.next.procurar(produto);
+				this.next.procurar(modelo);
 			}
 		}
 		else {
@@ -59,6 +58,19 @@ public class RepositorioProdutoLista implements RepositorioProduto {
 		else {
 			//erro 
 		}
+	}
+	
+	public boolean existe(String modelo) {
+		boolean n = false ;
+		if (this.produto != null) {
+			if (this.produto.getModelo().equals(modelo)) {
+				n = true ;
+			}
+			else {
+				this.next.existe(modelo);
+			}
+		}
+		return n ;
 	}
 	
 }
