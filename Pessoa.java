@@ -1,11 +1,10 @@
-package Pessoa;
 
-public class Pessoa {
+public abstract class Pessoa {
 
 	private String nome;
 	private int idade;
 	private String cpf;
-	private String endereco;	
+	private String endereco;
 
 	public Pessoa() {
 		this.nome = null;

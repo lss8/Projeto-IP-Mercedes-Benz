@@ -1,3 +1,4 @@
+
 public class RepositorioProdutoLista implements RepositorioProduto {
 	private Produto produto ;
 	private RepositorioProdutoLista next ;
