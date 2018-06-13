@@ -1,4 +1,3 @@
-
 public class RepositorioProdutoArray implements RepositorioProduto {
 	private Produto[] produtos ;
 	private int indice ;
@@ -12,9 +11,9 @@ public class RepositorioProdutoArray implements RepositorioProduto {
 		indice++ ;
 	}
 	
-	public void remover(Produto produto) {
+	public void remover(String modelo) {
 		for (int i=0;i<indice;i++) {
-			if (produtos[i].getModelo().equals(produto.getModelo())) {
+			if (produtos[i].getModelo().equals(modelo)) {
 				produtos[i] = null ;
 				int j = i ;
 				for (i=j;i<indice;i++) {
@@ -29,10 +28,10 @@ public class RepositorioProdutoArray implements RepositorioProduto {
 		}
 	}
 	
-	public Produto procurar(Produto produto) {
+	public Produto procurar(String modelo) {
 		boolean v = false ;
 		for (int i=0;i<indice;i++) {
-			if (produtos[i].getModelo().equals(produto.getModelo())) {
+			if (produtos[i].getModelo().equals(modelo)) {
 				v = true ;
 				return produtos[i] ;
 			}
@@ -47,12 +46,22 @@ public class RepositorioProdutoArray implements RepositorioProduto {
 		for (int i=0;i<indice;i++) {
 			if (produtos[i].getModelo().equals(produto.getModelo())) {
 				produtos[i] = produto ;
-				v = true ;
+				t = true ;
 			}
 		}
 		if (!t) {
 			//erro
 		}
+	}
+	
+	public boolean existe(String modelo) {
+		boolean n = false ;
+		for (int i=0;i<indice;i++) {
+			if (produtos[i].getModelo().equals(modelo)) {
+				n = true ;
+			}
+		}
+		return n ;
 	}
 	
 }
