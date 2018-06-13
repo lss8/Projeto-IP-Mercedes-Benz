@@ -5,6 +5,7 @@ public class Concessionaria {
 	private Funcionario funcionario;
 	private String local;
 	private int estoque;
+	private String nome;
 
 	Concessionaria() {
 		this.produto = null;
@@ -12,6 +13,7 @@ public class Concessionaria {
 		this.funcionario = null;
 		this.local = null;
 		this.estoque = 0;
+		this.nome = null;
 	}
 
 	public int getEstoque() {
@@ -52,6 +54,14 @@ public class Concessionaria {
 
 	public void setProduto(Produto produto) {
 		this.produto = produto;
+	}
+
+	public String getNome() {
+		return this.nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 }
