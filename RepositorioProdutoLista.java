@@ -1,4 +1,3 @@
-
 public class RepositorioProdutoLista implements RepositorioProduto {
 	private Produto produto ;
 	private RepositorioProdutoLista next ;
@@ -12,6 +11,9 @@ public class RepositorioProdutoLista implements RepositorioProduto {
 		if (this.produto == null) {
 			this.produto = produto ;
 			this.next = new RepositorioProdutoLista() ;
+		}
+		else {
+			this.next.inserir(produto) ;
 		}
 	}
 	
