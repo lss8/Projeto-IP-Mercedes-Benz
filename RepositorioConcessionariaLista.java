@@ -25,13 +25,13 @@ public class RepositorioConcessionariaLista implements RepositorioConcessionaria
 		}
 	}
 
-	public void remover(String nome) {
+	public void remover(String local) {
 		if (this.concessionaria != null) {
-			if (nome.equals(concessionaria.getNome())) {
+			if (local.equals(concessionaria.getLocal())) {
 				this.concessionaria = this.next.concessionaria;
 				this.next = this.next.next;
 			} else {
-				this.next.remover(nome);
+				this.next.remover(local);
 			}
 		} else {
 			// ERRO
@@ -39,24 +39,24 @@ public class RepositorioConcessionariaLista implements RepositorioConcessionaria
 
 	}
 
-	public Concessionaria procurar(String nome) {
+	public Concessionaria procurar(String local) {
 		if (this.concessionaria != null) {
-			if (nome.equals(concessionaria.getNome())) {
+			if (local.equals(concessionaria.getLocal())) {
 				return concessionaria;
 			} else {
-				this.next.procurar(nome);
+				this.next.procurar(local);
 			}
 		} else {
 			// ERRO
 		}
 	}
 
-	public boolean existe(String nome) {
+	public boolean existe(String local) {
 		boolean n = true;
-		if (nome.equals(concessionaria.getNome())) {
+		if (local.equals(concessionaria.getLocal())) {
 			n = true;
-		} else if (!(nome.equals(concessionaria.getNome()))) {
-			this.next.existe(nome);
+		} else if (!(local.equals(concessionaria.getLocal()))) {
+			this.next.existe(local);
 		} else {
 			n = false;
 		}

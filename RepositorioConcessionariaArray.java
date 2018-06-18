@@ -15,19 +15,19 @@ public class RepositorioConcessionariaArray implements RepositorioConcessionaria
 	public void atualizar(Concessionaria concessionaria) {
 		boolean t = false;
 		for (int i = 0; i < indice; i++) {
-			if (concessionarias[i].getNome().equals(concessionaria.getNome())) {
+			if (concessionarias[i].getLocal().equals(concessionaria.getLocal())) {
 				concessionarias[i] = concessionaria;
-				t= true;
-			}  
+				t = true;
+			}
 		}
-		if(!t) {
-			//ERRO
+		if (!t) {
+			// ERRO
 		}
 	}
 
-	public void remover(String nome) {
+	public void remover(String local) {
 		for (int i = 0; i < indice; i++) {
-			if (concessionarias[i].getNome().equals(nome)) {
+			if (concessionarias[i].getLocal().equals(local)) {
 				concessionarias[i] = null;
 				int j = i;
 				for (i = j; i < indice; i++) {
@@ -41,18 +41,25 @@ public class RepositorioConcessionariaArray implements RepositorioConcessionaria
 		}
 	}
 
-	public Concessionaria procurar(String nome) {
+	public Concessionaria procurar(String local) {
+		Concessionaria c = null ;
 		for (int i = 0; i < indice; i++) {
-			if (concessionarias[i].getNome().equals(nome)) {
-				return concessionarias[i];			}
+			if (concessionarias[i].getLocal().equals(local)) {
+				c = concessionarias[i] ;
+			}
 		}
-		//erro
+		if (erro) {
+			
+		}
+		else {
+			return c;
+		}
 	}
 
-	public boolean existe(String nome) {
+	public boolean existe(String local) {
 		boolean n = false;
 		for (int i = 0; i < indice; i++) {
-			if (concessionarias[i].getNome().equals(nome)) {
+			if (concessionarias[i].getLocal().equals(local)) {
 				n = true;
 			} else {
 				n = false;
