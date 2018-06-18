@@ -25,3 +25,16 @@ Classes básicas
   
 -Tesouraria :
   Saldo 
+
+Erros universais :
+-Objeto não encontrado
+-Objeto ja cadastrado
+
+Erros especificos :
+-Produto 
+  Modelo não vendido
+-Pessoa
+  CPF invalido
+  Menor de idade
+-Concessionaria
+  Estoque negativo
