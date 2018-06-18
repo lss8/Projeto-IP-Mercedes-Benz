@@ -1,4 +1,3 @@
-
 public class CadastroProduto {
 	private RepositorioProduto produtos ;
 	
@@ -11,7 +10,7 @@ public class CadastroProduto {
 	}
 	
 	public void inserir(Produto produto) {
-		if (!produtos.existe(produto)) {
+		if (!produtos.existe(produto.getTipo())) {
 			produtos.inserir(produto);
 		}
 		else {
@@ -19,9 +18,9 @@ public class CadastroProduto {
 		}
 	}
 	
-	public void remover(String modelo) {
-		if (produtos.existe(modelo)) {
-			produtos.remover(modelo);
+	public void remover(String tipo) {
+		if (produtos.existe(tipo)) {
+			produtos.remover(tipo);
 		}
 		else {
 			//erro
@@ -29,7 +28,7 @@ public class CadastroProduto {
 	}
 	
 	public void atualizar(Produto produto) {
-		if (produtos.existe(produto)) {
+		if (produtos.existe(produto.getTipo())) {
 			produtos.atualizar(produto);
 		}
 		else {
@@ -37,9 +36,9 @@ public class CadastroProduto {
 		}
 	}
 	
-	public Produto procurar(String modelo) {
-		if (produtos.existe(modelo)) {
-			return produtos.procurar(modelo) ;
+	public Produto procurar(String tipo) {
+		if (produtos.existe(tipo)) {
+			return produtos.procurar(tipo) ;
 		}
 		else {
 			//erro
