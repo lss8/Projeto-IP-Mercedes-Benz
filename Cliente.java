@@ -1,5 +1,5 @@
 
-public abstract class Cliente extends Pessoa{
+public class Cliente extends Pessoa{
 	
 	private Concessionaria socio;
 	
