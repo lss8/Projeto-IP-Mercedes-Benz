@@ -1,17 +1,18 @@
-
 public class Produto {
 	private String modelo ;
 	private String cor ;
+	private String tipo ;
 	private double preco ;
 	private double custof ;
 	private Concessionaria concessionaria ;
 	
-	public Produto() {
-		this.modelo = null ;
-		this.cor = null ;
-		this.preco = 0.0 ;
-		this.custof = 0.0 ;
-		this.concessionaria = null ;
+	public Produto(String modelo, String cor, String tipo, double preco, double custof, Concessionaria concessionaria) {
+		this.modelo = modelo ;
+		this.cor = cor ;
+		this.tipo = tipo ;
+		this.preco = preco ;
+		this.custof = custof ;
+		this.concessionaria = concessionaria ;
 	}
 	
 	public String getModelo() {
@@ -22,11 +23,19 @@ public class Produto {
 		this.modelo = modelo ;
 	}
 	
+	public String getTipo() {
+		return this.tipo ;
+	}
+	
+	public void setTipo(String tipo) {
+		this.tipo = tipo ;
+	}
+	
 	public double getPreco() {
 		return this.preco ;
 	}
 	
-	public void setPreco (double preco) {
+	public void setPreco(double preco) {
 		this.preco = preco ;
 	}
 	
@@ -38,7 +47,7 @@ public class Produto {
 		return this.custof ;
 	}
 	
-	public void setCustof (double custof) {
+	public void setCustof(double custof) {
 		this.custof = custof ;
 	}
 	
@@ -56,10 +65,6 @@ public class Produto {
 	
 	public String getConcessionaria() {
 		return this.concessionaria.getLocal() ;
-	}
-	
-	public void setConcessionaria (Concessionaria concessionaria) {
-		this.concessionaria = concessionaria ;
 	}
 	
 }
