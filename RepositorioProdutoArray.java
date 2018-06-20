@@ -2,8 +2,8 @@ public class RepositorioProdutoArray implements RepositorioProduto {
 	private Produto[] produtos ;
 	private int indice ;
 	
-	public RepositorioProdutoArray(int tamanho) {
-		produtos = new Produto[tamanho] ;
+	public RepositorioProdutoArray() {
+		produtos = new Produto[30] ;
 	}
 	
 	public void inserir(Produto produto) {
@@ -11,9 +11,11 @@ public class RepositorioProdutoArray implements RepositorioProduto {
 		indice++ ;
 	}
 	
-	public void remover(String modelo) {
+	public void remover(String tipo) throws ProdutoNaoEncontradoException {
+		boolean achou = false ;
 		for (int i=0;i<indice;i++) {
-			if (produtos[i].getModelo().equals(modelo)) {
+			if (produtos[i].getTipo().equals(tipo)) {
+				achou = true ;
 				produtos[i] = null ;
 				int j = i ;
 				for (i=j;i<indice;i++) {
@@ -22,46 +24,52 @@ public class RepositorioProdutoArray implements RepositorioProduto {
 					}
 					else {
 						produtos[i] = null ;
+						indice-- ;
 					}
 				}
 			}
 		}
+		if (!achou) {
+			throw new ProdutoNaoEncontradoException() ;
+		}
 	}
 	
-	public Produto procurar(String modelo) {
-		boolean v = false ;
+	public Produto procurar(String tipo) throws ProdutoNaoEncontradoException {
+		Produto p = null ;
 		for (int i=0;i<indice;i++) {
-			if (produtos[i].getModelo().equals(modelo)) {
-				v = true ;
-				return produtos[i] ;
+			if (produtos[i].getTipo().equals(tipo)) {
+				p = produtos[i] ;
 			}
 		}
-		if (!v) {
-			//erro
+		if (p == null) {
+			throw new ProdutoNaoEncontradoException() ;
+		}
+		else {
+			return p ;
 		}
 	}
 	
-	public void atualizar(Produto produto) {
-		boolean t = false ;
+	public void atualizar(Produto produto) throws ProdutoNaoEncontradoException {
+		boolean achou = false ;
 		for (int i=0;i<indice;i++) {
-			if (produtos[i].getModelo().equals(produto.getModelo())) {
+			if (produtos[i].getTipo().equals(produto.getTipo())) {
 				produtos[i] = produto ;
-				t = true ;
+				achou = true ;
 			}
 		}
-		if (!t) {
-			//erro
+		if (!achou) {
+			throw new ProdutoNaoEncontradoException() ;
 		}
 	}
 	
-	public boolean existe(String modelo) {
-		boolean n = false ;
+	public boolean existe(String tipo) {
+		boolean achou = false ;
 		for (int i=0;i<indice;i++) {
-			if (produtos[i].getModelo().equals(modelo)) {
-				n = true ;
+			if (produtos[i].getTipo().equals(tipo)) {
+				achou = true ;
 			}
 		}
-		return n ;
+		return achou ;
 	}
 	
 }
