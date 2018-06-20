@@ -1,48 +1,37 @@
-
 public class CadastroProduto {
 	private RepositorioProduto produtos ;
 	
-	public CadastroProduto(RepositorioProdutoArray rpa) {
-		produtos = rpa ;
+	public CadastroProduto(char tipo) {
+		if ((tipo == 'a') || (tipo == 'A')) {
+			produtos = new RepositorioProdutoArray()  ;
+		}
+		else {
+			produtos = new RepositorioProdutoLista() ;
+		}	
 	}
 	
 	public CadastroProduto(RepositorioProdutoLista rpl) {
-		produtos = rpl ;
+		
 	}
 	
-	public void inserir(Produto produto) {
-		if (!produtos.existe(produto)) {
+	public void cadastrar(Produto produto) throws ProdutoJaCadastradoException {
+		if (!produtos.existe(produto.getTipo())) {
 			produtos.inserir(produto);
 		}
 		else {
-			//erro
+			throw new ProdutoJaCadastradoException() ;
 		}
 	}
 	
-	public void remover(String modelo) {
-		if (produtos.existe(modelo)) {
-			produtos.remover(modelo);
-		}
-		else {
-			//erro
-		}
+	public void remover(String tipo) throws ProdutoNaoEncontradoException {
+		produtos.remover(tipo);
 	}
 	
-	public void atualizar(Produto produto) {
-		if (produtos.existe(produto)) {
-			produtos.atualizar(produto);
-		}
-		else {
-			//erro
-		}
+	public void atualizar(Produto produto) throws ProdutoNaoEncontradoException {
+		produtos.atualizar(produto);
 	}
 	
-	public Produto procurar(String modelo) {
-		if (produtos.existe(modelo)) {
-			return produtos.procurar(modelo) ;
-		}
-		else {
-			//erro
-		}
+	public Produto procurar(String tipo) throws ProdutoNaoEncontradoException {
+		return produtos.procurar(tipo) ;
 	}
 }
