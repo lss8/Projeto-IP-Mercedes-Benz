@@ -1,3 +1,5 @@
+package interfaces;
+import classeBasica.*;
 
 public interface RepositorioConcessionaria {
 

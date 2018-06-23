@@ -1,3 +1,8 @@
+package negocio;
+import repositorio.*;
+import interfaces.*;
+import classeBasica.*;
+import exceptions.*;
 
 public class CadastroPessoa {
 

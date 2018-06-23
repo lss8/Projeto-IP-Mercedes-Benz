@@ -1,3 +1,6 @@
+package repositorio;
+import classeBasica.*;
+import interfaces.*;
 
 public class RepositorioConcessionariaArray implements RepositorioConcessionaria {
 	private Concessionaria[] concessionarias;

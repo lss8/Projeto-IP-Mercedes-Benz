@@ -1,3 +1,6 @@
+package repositorio;
+import classeBasica.*;
+import interfaces.*;
 
 public class RepositorioConcessionariaLista implements RepositorioConcessionaria {
 	private Concessionaria concessionaria;

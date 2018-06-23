@@ -1,3 +1,5 @@
+package classeBasica;
+import exceptions.*;
 
 public abstract class Pessoa {
 

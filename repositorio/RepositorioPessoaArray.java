@@ -1,3 +1,7 @@
+package repositorio;
+import classeBasica.*;
+import interfaces.*;
+import exceptions.*;
 
 public class RepositorioPessoaArray implements RepositorioPessoa {
 

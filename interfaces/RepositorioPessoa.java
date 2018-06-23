@@ -1,3 +1,6 @@
+package interfaces;
+import classeBasica.*;
+import exceptions.*;
 
 public interface RepositorioPessoa {
 

@@ -1,3 +1,6 @@
+package classeBasica;
+import exceptions.*;
+import interfaces.*;
 
 public class Concessionaria {
 	private Produto produto;

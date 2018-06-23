@@ -1,3 +1,5 @@
+package classeBasica;
+import exceptions.*;
 
 public class Cliente extends Pessoa{
 	
