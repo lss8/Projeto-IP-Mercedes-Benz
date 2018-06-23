@@ -4,8 +4,9 @@ public class Funcionario extends Pessoa{
 	private Concessionaria trabalho; 
 	private double salario;
 	
-	public Funcionario() {
-		super();
+	public Funcionario(String nome, int idade, String cpf, String endereco) 
+			throws CPFInvalidoException, PessoaMenorIdadeException{
+		super(nome, idade, cpf, endereco);
 		salario  = 0; 
 	}
 	

@@ -6,11 +6,41 @@ public abstract class Pessoa {
 	private String cpf;
 	private String endereco;
 
-	public Pessoa() {
-		this.nome = null;
-		this.idade = 0;
-		this.cpf = null;
-		this.endereco = null;
+	public Pessoa(String nome, int idade, String cpf, String endereco) 
+			throws CPFInvalidoException, PessoaMenorIdadeException{
+		boolean valido = false;
+		if (cpfValido(cpf)) {
+			valido = true;
+		} else {
+			throw new CPFInvalidoException();
+		}
+		if (idade >= 18) {
+			valido = true;
+		} else {
+			throw new PessoaMenorIdadeException();
+		}
+		if (valido) {
+			this.nome = nome;
+			this.idade = idade;
+			this.cpf = cpf;
+			this.endereco = endereco;
+		}
+	}
+
+	public boolean cpfValido(String cpf) {
+		boolean valido = false;
+		if (cpf.length() == 11) {
+			valido = true;
+		}
+		for (int i = 0; i < cpf.length(); i++) {
+			if (cpf.charAt(i) >= 48 && cpf.charAt(i) <= 57) {
+				valido = true;
+			} else {
+				valido = false;
+				i = cpf.length();
+			}
+		}
+		return valido;
 	}
 
 	public String getNome() {
@@ -33,8 +63,12 @@ public abstract class Pessoa {
 		return cpf;
 	}
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
+	public void setCpf(String cpf) throws CPFInvalidoException{
+		if (cpfValido(cpf)) {
+			this.cpf = cpf;
+		} else {
+			throw new CPFInvalidoException();
+		}
 	}
 
 	public String getEndereco() {

@@ -3,11 +3,11 @@ public interface RepositorioPessoa {
 
 	void inserir(Pessoa pessoa);
 	
-	Pessoa procurar(String cpf);
+	Pessoa procurar(String cpf) throws PessoaNaoEncontradaException;
 	
-	void atualizar(Pessoa pessoa);
+	void atualizar(Pessoa pessoa) throws PessoaNaoEncontradaException;
 	
-	void remover(String cpf);
+	void remover(String cpf) throws PessoaNaoEncontradaException;
 	
 	boolean existe(String cpf);
 	

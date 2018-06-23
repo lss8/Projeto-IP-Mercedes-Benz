@@ -3,8 +3,9 @@ public class Cliente extends Pessoa{
 	
 	private Concessionaria socio;
 	
-	public Cliente() {
-		super();
+	public Cliente(String nome, int idade, String cpf, String endereco) 
+			throws CPFInvalidoException, PessoaMenorIdadeException{
+		super(nome, idade, cpf, endereco);
 		socio = null;
 	}
 

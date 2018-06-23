@@ -1,29 +1,38 @@
 
-public class RepositorioPessoaArray implements RepositorioPessoa{
-	
+public class RepositorioPessoaArray implements RepositorioPessoa {
+
 	private Pessoa[] pessoas;
 	private int indice;
-	
-	public RepositorioPessoaArray(int tamanho) {
-		pessoas = new Pessoa[tamanho];
+
+	public RepositorioPessoaArray() {
+		pessoas = new Pessoa[100];
 		indice = 0;
 	}
-	
+
 	public void inserir(Pessoa pessoa) {
-		this.pessoas[indice] = pessoa;
-		indice++;
+		if (indice < 100) {
+			this.pessoas[indice] = pessoa;
+			indice++;
+		}else {
+			
+		}
 	}
-	
-	public Pessoa procurar(String cpf) {
-		for(int i = 0; i < indice; i++) {
-			if(pessoas[i].getCpf().equals(cpf)) {
-				return pessoas[i];
+
+	public Pessoa procurar(String cpf) throws PessoaNaoEncontradaException {
+		Pessoa pessoa = null;
+		for (int i = 0; i < indice; i++) {
+			if (pessoas[i].getCpf().equals(cpf)) {
+				pessoa = pessoas[i];
 			}
 		}
-		//erro
+		if (pessoa != null) {
+			return pessoa;
+		} else {
+			throw new PessoaNaoEncontradaException();
+		}
 	}
-	
-	public void atualizar(Pessoa pessoa) {
+
+	public void atualizar(Pessoa pessoa) throws PessoaNaoEncontradaException {
 		boolean achou = false;
 		for (int i = 0; i < indice; i++) {
 			if (pessoas[i].getCpf().equals(pessoa.getCpf())) {
@@ -32,11 +41,11 @@ public class RepositorioPessoaArray implements RepositorioPessoa{
 			}
 		}
 		if (!achou) {
-			//erro
+			throw new PessoaNaoEncontradaException();
 		}
 	}
-	
-	public void remover(String cpf) {
+
+	public void remover(String cpf) throws PessoaNaoEncontradaException {
 		boolean achou = false;
 		for (int i = 0; i < indice; i++) {
 			if (pessoas[i].getCpf().equals(cpf)) {
@@ -47,10 +56,10 @@ public class RepositorioPessoaArray implements RepositorioPessoa{
 			}
 		}
 		if (!achou) {
-			//erro
+			throw new PessoaNaoEncontradaException();
 		}
 	}
-	
+
 	public boolean existe(String cpf) {
 		boolean achou = false;
 		for (int i = 0; i < indice; i++) {
@@ -60,5 +69,5 @@ public class RepositorioPessoaArray implements RepositorioPessoa{
 		}
 		return achou;
 	}
-	
+
 }

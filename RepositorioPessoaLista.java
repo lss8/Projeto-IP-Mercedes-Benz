@@ -18,40 +18,44 @@ public class RepositorioPessoaLista implements RepositorioPessoa {
 		}
 	}
 
-	public Pessoa procurar(String cpf) {
+	public Pessoa procurar(String cpf) throws PessoaNaoEncontradaException {
+		Pessoa pessoa = null;
 		if (this.pessoa != null) {
 			if (this.pessoa.getCpf().equals(cpf)) {
-				return this.pessoa;
+				pessoa = this.pessoa;
 			} else {
 				this.next.procurar(cpf);
 			}
+		}
+		if (pessoa == null) {
+			throw new PessoaNaoEncontradaException();
 		} else {
-			// erro
+			return pessoa;
 		}
 	}
 
-	public void atualizar(Pessoa pessoa) {
+	public void atualizar(Pessoa pessoa) throws PessoaNaoEncontradaException {
 		if (this.pessoa != null) {
 			if (this.pessoa.getCpf().equals(pessoa.getCpf())) {
 				this.pessoa = pessoa;
-			}else {
+			} else {
 				this.next.atualizar(pessoa);
 			}
-		}else {
-			//erro
+		} else {
+			 throw new PessoaNaoEncontradaException();
 		}
 	}
 
-	public void remover(String cpf) {
+	public void remover(String cpf) throws PessoaNaoEncontradaException {
 		if (this.pessoa != null) {
-			if(this.pessoa.getCpf().equals(cpf)) {
+			if (this.pessoa.getCpf().equals(cpf)) {
 				this.pessoa = this.next.pessoa;
 				this.next = this.next.next;
-			}else {
+			} else {
 				this.next.remover(cpf);
 			}
-		}else {
-			//erro
+		} else {
+			 throw new PessoaNaoEncontradaException();
 		}
 	}
 
@@ -59,7 +63,7 @@ public class RepositorioPessoaLista implements RepositorioPessoa {
 		boolean achou = false;
 		if (this.pessoa.getCpf().equals(cpf)) {
 			achou = true;
-		}else {
+		} else {
 			this.next.existe(cpf);
 		}
 		return achou;
