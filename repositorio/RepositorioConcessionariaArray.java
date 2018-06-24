@@ -1,21 +1,21 @@
 package repositorio;
 import classeBasica.*;
 import interfaces.*;
-
+import exceptions.*;
 public class RepositorioConcessionariaArray implements RepositorioConcessionaria {
 	private Concessionaria[] concessionarias;
 	private int indice;
 
-	public RepositorioConcessionariaArray(int tamanho) {
-		concessionarias = new Concessionaria[tamanho];
+	public RepositorioConcessionariaArray() {
+		concessionarias = new Concessionaria[30];
 	}
 
 	public void inserir(Concessionaria concessionaria) {
 		concessionarias[indice] = concessionaria;
 		indice++;
 	}
-
-	public void atualizar(Concessionaria concessionaria) {
+ 
+	public void atualizar(Concessionaria concessionaria) throws ConcessionariaNaoEncontradaException {
 		boolean t = false;
 		for (int i = 0; i < indice; i++) {
 			if (concessionarias[i].getLocal().equals(concessionaria.getLocal())) {
@@ -24,13 +24,15 @@ public class RepositorioConcessionariaArray implements RepositorioConcessionaria
 			}
 		}
 		if (!t) {
-			// ERRO
+			throw new ConcessionariaNaoEncontradaException();
 		}
 	}
 
-	public void remover(String local) {
+	public void remover(String local) throws ConcessionariaNaoEncontradaException {
+		boolean t = false;
 		for (int i = 0; i < indice; i++) {
 			if (concessionarias[i].getLocal().equals(local)) {
+				t = true;
 				concessionarias[i] = null;
 				int j = i;
 				for (i = j; i < indice; i++) {
@@ -42,17 +44,21 @@ public class RepositorioConcessionariaArray implements RepositorioConcessionaria
 				}
 			}
 		}
+		if(!t) {
+			throw new ConcessionariaNaoEncontradaException();
+		}
 	}
 
-	public Concessionaria procurar(String local) {
+	public Concessionaria procurar(String local) throws ConcessionariaNaoEncontradaException {
 		Concessionaria c = null ;
+		
 		for (int i = 0; i < indice; i++) {
 			if (concessionarias[i].getLocal().equals(local)) {
 				c = concessionarias[i] ;
 			}
 		}
-		if (erro) {
-			
+		if (c == null) {
+			throw new ConcessionariaNaoEncontradaException();
 		}
 		else {
 			return c;

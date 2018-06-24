@@ -1,6 +1,7 @@
 package repositorio;
 import classeBasica.*;
 import interfaces.*;
+import negocio.*;
 
 public class RepositorioConcessionariaLista implements RepositorioConcessionaria {
 	private Concessionaria concessionaria;
@@ -11,7 +12,7 @@ public class RepositorioConcessionariaLista implements RepositorioConcessionaria
 		this.next = null;
 	}
 
-	public void inserir(Concessionaria concessionaria) {
+	public void inserir(Concessionaria concessionaria) {	
 		if (this.concessionaria == null) {
 			this.concessionaria = concessionaria;
 			this.next = new RepositorioConcessionariaLista();
@@ -20,15 +21,19 @@ public class RepositorioConcessionariaLista implements RepositorioConcessionaria
 		}
 	}
 
-	public void atualizar(Concessionaria concessionaria) {
-		if (this.concessionaria != null && concessionaria.equals(this.concessionaria)) {
-			this.concessionaria = concessionaria;
+	public void atualizar(Concessionaria concessionaria) throws ConcessionariaNaoEncontradaException {
+		if (this.concessionaria != null) {
+			if (concessionaria.equals(this.concessionaria)) {
+				this.concessionaria = concessionaria;
+			} else {
+				this.next.atualizar(concessionaria);
+			}
 		} else {
-			this.next.atualizar(concessionaria);
+			throw new ConcessionariaNaoEncontradaException();
 		}
 	}
 
-	public void remover(String local) {
+	public void remover(String local) throws ConcessionariaNaoEncontradaException {
 		if (this.concessionaria != null) {
 			if (local.equals(concessionaria.getLocal())) {
 				this.concessionaria = this.next.concessionaria;
@@ -37,21 +42,23 @@ public class RepositorioConcessionariaLista implements RepositorioConcessionaria
 				this.next.remover(local);
 			}
 		} else {
-			// ERRO
+			throw new ConcessionariaNaoEncontradaException();
 		}
 
 	}
 
-	public Concessionaria procurar(String local) {
+	public Concessionaria procurar(String local) throws ConcessionariaNaoEncontradaException {
+		Concessionaria concessionaria = null; 
 		if (this.concessionaria != null) {
 			if (local.equals(concessionaria.getLocal())) {
-				return concessionaria;
+				concessionaria = this.concessionaria;
 			} else {
 				this.next.procurar(local);
 			}
-		} else {
-			// ERRO
-		}
+		} if (concessionaria == null) {
+			 throw new  ConcessionariaNaoEncontradaException();
+		} 
+			return concessionaria;
 	}
 
 	public boolean existe(String local) {
