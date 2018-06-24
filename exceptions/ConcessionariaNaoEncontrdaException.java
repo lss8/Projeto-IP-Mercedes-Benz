@@ -1,5 +1,7 @@
+package exceptions;
+
 public class ConcessionariaNaoEncontrdaException extends Exception {
 	public ConcessionariaNaoEncontrdaException() {
-		super("Concession·ria n„o encontrada");
+		super("Concession√°ria n√£o encontrada");
 	}
 }
